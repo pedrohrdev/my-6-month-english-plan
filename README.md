@@ -68,39 +68,6 @@ I believe in **learning in public** for several reasons:
 
 ---
 
-## Monthly Structure
-
-| Month | Focus Area | Primary Goal | Status |
-|-------|-----------|--------------|--------|
-| **June** | Foundations | Establish daily habits & technical vocabulary | 🟡 In Progress |
-| **July** | Listening | Podcast comprehension & native speed exposure | ⬜ Planned |
-| **August** | Speaking | Practice conversations & reduce hesitation | ⬜ Planned |
-| **September** | Technical | Professional communication & documentation | ⬜ Planned |
-| **October** | Advanced | Complex topics & nuanced understanding | ⬜ Planned |
-| **November** | Consolidation | Integration & long-term retention | ⬜ Planned |
-
----
-
-## Daily Routine
-
-A structured approach ensures consistency and measurable progress.
-
-### Core Activities (Daily)
-
-| Activity | Time | Format | Purpose |
-|----------|------|--------|---------|
-| **Anki Review** | 20-30 min | Spaced repetition | Vocabulary retention |
-| **Reading** | 15-20 min | Tech articles, documentation | Comprehension & context |
-| **Listening** | 15-20 min | Podcasts, YouTube, talks | Natural speech patterns |
-| **Writing** | 10-15 min | Notes, reflections, journal | Active production |
-| **Speaking** | 10-15 min | Self-talk, shadowing, voice memos | Pronunciation & fluency |
-
-### Weekly Bonus
-
-- **Language exchange** - Conversation practice (2-3 sessions)
-- **Technical watching** - Full tech talk or conference session
-- **Reflection** - Write about progress and adjust strategy
-
 ### Progress Check-in
 
 - **Weekly** - Review what worked, what didn't
