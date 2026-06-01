@@ -68,13 +68,6 @@ I believe in **learning in public** for several reasons:
 
 ---
 
-### Progress Check-in
-
-- **Weekly** - Review what worked, what didn't
-- **Monthly** - Complete assessment and plan next month
-
----
-
 ## Tools & Resources
 
 ### Learning Tools
@@ -98,80 +91,16 @@ I believe in **learning in public** for several reasons:
 
 ---
 
-## Progress Tracking
-
-### Current Status: June 2026
-
-```
-Week 1-2: Foundation Building
-├── 📚 Anki Deck Creation (500+ cards)
-├── 🎯 Daily Routine Established
-├── 📝 Documentation Setup
-└── ✅ Baseline Assessment Complete
-
-Week 3-4: Momentum Building
-├── 📈 Vocabulary Growth Tracking
-├── 🎧 Podcast Schedule Established
-├── 💬 Speaking Practice Started
-└── 📊 Progress Review Scheduled
-```
-
-### Metrics Being Tracked
-
-- Daily habit completion rate (target: 95%+)
-- Anki card retention percentage
-- Vocabulary growth (cards added per week)
-- Hours of listening consumed
-- Number of conversations completed
-- Reading comprehension improvement
-
----
-
 ## Live Plans
 
 Access the detailed monthly roadmaps and daily checklists:
 
 ### 📋 Main Roadmap
-**[6-Month Complete Plan](https://github.com/pedrohrdev/my-6-month-english-plan)** - Overview and methodology
+**[6-Month Complete Plan](https://my-6-month-english-plan.vercel.app/)** - Overview and methodology
 
 ### 🌱 Month-by-Month Breakdowns
 
-- **[June (Foundations)](https://github.com/pedrohrdev/my-6-month-english-plan/blob/main/months/june.md)** - Building habits and foundation vocabulary
-- **[July (Listening)](https://github.com/pedrohrdev/my-6-month-english-plan)** - Coming soon
-- **[August (Speaking)](https://github.com/pedrohrdev/my-6-month-english-plan)** - Coming soon
-- **[September (Technical)](https://github.com/pedrohrdev/my-6-month-english-plan)** - Coming soon
-- **[October (Advanced)](https://github.com/pedrohrdev/my-6-month-english-plan)** - Coming soon
-- **[November (Consolidation)](https://github.com/pedrohrdev/my-6-month-english-plan)** - Coming soon
-
----
-
-## Repository Structure
-
-```
-my-6-month-english-plan/
-├── README.md                          # This file - Project overview
-├── months/
-│   ├── june.md                       # June: Foundations & Vocabulary
-│   ├── july.md                       # July: Listening Skills
-│   ├── august.md                     # August: Speaking & Fluency
-│   ├── september.md                  # September: Technical English
-│   ├── october.md                    # October: Advanced Topics
-│   └── november.md                   # November: Consolidation
-├── resources/
-│   ├── vocabulary/
-│   │   ├── technical-terms.md        # Tech-specific vocabulary
-│   │   ├── business-english.md       # Professional communication
-│   │   └── phrasal-verbs.md          # Common phrasal verbs
-│   ├── podcasts.md                   # Recommended podcast list
-│   ├── youtube-channels.md           # Educational YouTube resources
-│   └── tools-setup.md                # Tool configuration guides
-├── progress/
-│   ├── weekly-logs.md                # Weekly progress notes
-│   └── metrics.md                    # Tracking statistics
-└── anki/
-    ├── tech-vocabulary.apkg          # Anki deck - Technical terms
-    └── professional-phrases.apkg     # Anki deck - Work phrases
-```
+- **[June (Foundations)](https://my-6-month-english-plan.vercel.app/month-1)** - Building habits and foundation vocabulary
 
 ---
 
