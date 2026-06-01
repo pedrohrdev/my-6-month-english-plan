@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Inglês — Junho</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #1e1e1e;
+    --green: #00ff88;
+    --green-dim: #00cc6a;
+    --green-muted: rgba(0,255,136,0.08);
+    --cyan: #00d4ff;
+    --yellow: #f5e642;
+    --text: #e8e8e8;
+    --text-muted: #666;
+    --text-dim: #999;
+    --vocab-color: #00ff88;
+    --gram-color: #f5e642;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    padding: 40px 24px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    max-width: 1100px;
+    margin: 0 auto 56px;
+    border-left: 3px solid var(--green);
+    padding-left: 20px;
+  }
+  .header .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+  .header h1 span { color: var(--text); }
+  .header .subtitle {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+  .header .subtitle em { color: var(--vocab-color); font-style: normal; }
+  .header .subtitle b { color: var(--gram-color); font-weight: 400; }
+
+  /* LEGEND */
+  .legend {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 2px;
+  }
+  .legend-dot.v { background: var(--vocab-color); }
+  .legend-dot.g { background: var(--gram-color); }
+
+  /* WEEKS */
+  .weeks {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .week-block {}
+  .week-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .week-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .week-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .week-dates {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  /* DAYS GRID */
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .day-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--border);
+  }
+  .day-card:hover { border-color: #333; }
+  .day-card:hover::before { background: var(--green); }
+
+  .day-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .day-date {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+    margin-top: 2px;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    width: fit-content;
+  }
+  .section-label.v {
+    background: rgba(0,255,136,0.12);
+    color: var(--vocab-color);
+  }
+  .section-label.g {
+    background: rgba(245,230,66,0.1);
+    color: var(--gram-color);
+  }
+
+  .section-content {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.45;
+  }
+  .section-note {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.4;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .words-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    margin-top: 2px;
+  }
+  .words-badge::before {
+    content: '→';
+    color: var(--text-muted);
+  }
+
+  /* WEEK SUMMARY */
+  .week-summary {
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: var(--green-muted);
+    border: 1px solid rgba(0,255,136,0.15);
+    border-radius: 6px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .summary-item .s-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .summary-item .s-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  /* TOTAL BAR */
+  .total-block {
+    max-width: 1100px;
+    margin: 56px auto 0;
+    padding: 28px 32px;
+    background: var(--surface);
+    border: 1px solid var(--green);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .total-block .t-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .total-block .t-val {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: -1px;
+  }
+  .total-block .t-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 380px;
+  }
+  .total-block .t-desc strong { color: var(--text); }
+
+  /* ANKI TIP */
+  .anki-tip {
+    max-width: 1100px;
+    margin: 20px auto 0;
+    padding: 14px 20px;
+    background: rgba(0,212,255,0.06);
+    border-left: 3px solid var(--cyan);
+    border-radius: 0 6px 6px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--cyan);
+    line-height: 1.6;
+  }
+  .anki-tip strong { color: #fff; }
+
+  @media (max-width: 700px) {
+    .days-grid { grid-template-columns: 1fr 1fr; }
+    .days-grid .day-card:nth-child(5) { grid-column: span 2; }
+  }
+  @media (max-width: 440px) {
+    .days-grid { grid-template-columns: 1fr; }
+    .days-grid .day-card:nth-child(5) { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="tag">// Fase 1 · Mês 1 · Jun 2025</div>
+  <h1>Inglês <span>de</span><br>Junho</h1>
+  <div class="subtitle">
+    <em>■ Vocabulário</em> &nbsp;|&nbsp; <b>■ Gramática</b> &nbsp;·&nbsp; 15 min + 15 min por dia
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot v"></div> Vocabulário (15 min)</div>
+  <div class="legend-item"><div class="legend-dot g"></div> Gramática (15 min)</div>
+</div>
+
+<div class="weeks">
+
+  <!-- SEMANA 1 -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-num">Semana 01</div>
+      <div class="week-title">Números, Datas & Verb to Be</div>
+      <div class="week-dates">02 – 06 Jun</div>
+    </div>
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Segunda</div>
+          <div class="day-date">02</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Números 1–20</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">one, two, three... até twenty. Fale em voz alta.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Verb to be — afirmativa</div>
+          <div class="section-note">I am / You are / He is / She is / It is / We are / They are</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Terça</div>
+          <div class="day-date">03</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Números 21–100 (dezenas)</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">twenty, thirty, forty... hundred. + revisão do dia anterior.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Verb to be — negativa</div>
+          <div class="section-note">I am not / He isn't / They aren't. Pratique 5 frases próprias.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Quarta</div>
+          <div class="day-date">04</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Dias da semana + meses</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">Monday–Sunday + January–December.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Verb to be — interrogativa</div>
+          <div class="section-note">Are you...? Is he...? Am I...? + respostas curtas: Yes, I am / No, he isn't.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Quinta</div>
+          <div class="day-date">05</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Datas — como falar</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">first, second, third... June 5th, 2025. Escreva sua data de nascimento.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Verb to be — revisão geral</div>
+          <div class="section-note">Monte 10 frases misturando af. / neg. / interr. Exemplo: "Is today Friday?"</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Sexta</div>
+          <div class="day-date">06</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Revisão semana 1</div>
+          <div class="words-badge">Revise os 40 cards no Anki</div>
+          <div class="section-note">Só revisão — sem cards novos. Teste a si mesmo.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Mini-desafio: to be</div>
+          <div class="section-note">Escreva 5 frases sobre você usando to be. Ex: "I am a developer. I am not tired."</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="week-summary">
+      <div class="summary-item"><div class="s-label">Vocab. acumulado</div><div class="s-value">~40 palavras</div></div>
+      <div class="summary-item"><div class="s-label">Gramática</div><div class="s-value">Verb to Be ✓</div></div>
+      <div class="summary-item"><div class="s-label">Foco</div><div class="s-value">Números · Datas</div></div>
+    </div>
+  </div>
+
+  <!-- SEMANA 2 -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-num">Semana 02</div>
+      <div class="week-title">Tempo/Clima, Rotina & Present Simple</div>
+      <div class="week-dates">09 – 13 Jun</div>
+    </div>
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Segunda</div>
+          <div class="day-date">09</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Tempo e clima</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">sunny, rainy, cold, hot, cloudy, windy, foggy, storm, temperature, weather.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Present Simple — I / You / We / They</div>
+          <div class="section-note">I work. I study. You play. Estrutura: sujeito + verbo base. 5 frases.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Terça</div>
+          <div class="day-date">10</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Verbos básicos (ação)</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">work, study, eat, sleep, go, come, play, write, read, watch.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Present Simple — He / She / It</div>
+          <div class="section-note">Regra do -s/-es: He works. She watches. It goes. Pratique com 5 verbos.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Quarta</div>
+          <div class="day-date">11</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Rotina diária</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">wake up, brush teeth, have breakfast, go to work, have lunch, come home, have dinner, take a shower, go to bed.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Present Simple — negativa</div>
+          <div class="section-note">I don't work. He doesn't sleep. Escreva sua rotina negada. Ex: "I don't wake up early."</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Quinta</div>
+          <div class="day-date">12</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Mais verbos + objetos comuns</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">use, open, close, take, put, give, see, know, want, need.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Present Simple — interrogativa</div>
+          <div class="section-note">Do you...? Does he...? Do they...? + respostas: Yes, I do / No, he doesn't.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Sexta</div>
+          <div class="day-date">13</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Revisão semana 2</div>
+          <div class="words-badge">Revise os 40 novos + 40 antigos</div>
+          <div class="section-note">Só revisão. Marque os difíceis no Anki.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Mini-desafio: rotina</div>
+          <div class="section-note">Escreva sua rotina de segunda em 6 frases: 2 afirm., 2 neg., 2 interrog.</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="week-summary">
+      <div class="summary-item"><div class="s-label">Vocab. acumulado</div><div class="s-value">~80 palavras</div></div>
+      <div class="summary-item"><div class="s-label">Gramática</div><div class="s-value">Present Simple ✓</div></div>
+      <div class="summary-item"><div class="s-label">Foco</div><div class="s-value">Clima · Rotina · Verbos</div></div>
+    </div>
+  </div>
+
+  <!-- SEMANA 3 -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-num">Semana 03</div>
+      <div class="week-title">Objetos, Pronomes & Perguntas básicas</div>
+      <div class="week-dates">16 – 20 Jun</div>
+    </div>
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Segunda</div>
+          <div class="day-date">16</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Objetos comuns (casa)</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">table, chair, door, window, phone, computer, book, bag, key, lamp.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Pronomes pessoais + possessivos</div>
+          <div class="section-note">I/me/my · you/your · he/him/his · she/her · it/its · we/our · they/their. Monte frases.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Terça</div>
+          <div class="day-date">17</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Objetos comuns (trabalho/rua)</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">car, bus, street, store, office, hospital, school, restaurant, bank, airport.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Perguntas com What / Where / Who</div>
+          <div class="section-note">What is this? Where are you? Who is she? Monte 5 perguntas do seu cotidiano.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Quarta</div>
+          <div class="day-date">18</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Perguntas básicas (frases prontas)</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">How are you? What's your name? Where are you from? How old are you? What do you do?</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Perguntas com When / Why / How</div>
+          <div class="section-note">When do you work? Why do you study? How do you feel? Pratique respondendo também.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Quinta</div>
+          <div class="day-date">19</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Negativas comuns (frases prontas)</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">I don't know. I don't understand. I don't speak English well. I'm not sure. I can't.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Negativas — revisão consolidada</div>
+          <div class="section-note">Revise: am not / isn't / aren't + don't / doesn't. Escreva 8 frases negativas suas.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Sexta</div>
+          <div class="day-date">20</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Revisão semana 3</div>
+          <div class="words-badge">Revise todos os 120 cards</div>
+          <div class="section-note">Filtre os com mais erros. Refaça só esses amanhã.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Mini-diálogo escrito</div>
+          <div class="section-note">Escreva um diálogo de 6 linhas: apresentação + pergunta + resposta. Use tudo que aprendeu.</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="week-summary">
+      <div class="summary-item"><div class="s-label">Vocab. acumulado</div><div class="s-value">~120 palavras</div></div>
+      <div class="summary-item"><div class="s-label">Gramática</div><div class="s-value">Pronomes + WH Questions ✓</div></div>
+      <div class="summary-item"><div class="s-label">Foco</div><div class="s-value">Objetos · Perguntas · Negativas</div></div>
+    </div>
+  </div>
+
+  <!-- SEMANA 4 -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-num">Semana 04</div>
+      <div class="week-title">There is/are, Preposições & Consolidação</div>
+      <div class="week-dates">23 – 27 Jun</div>
+    </div>
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Segunda</div>
+          <div class="day-date">23</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Preposições de lugar</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">in, on, at, under, next to, between, behind, in front of, near, inside.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">There is / There are — afirmativa</div>
+          <div class="section-note">There is a book on the table. There are two chairs. Descreva seu quarto em 4 frases.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Terça</div>
+          <div class="day-date">24</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Preposições de tempo</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">at (at 8pm), on (on Monday), in (in June / in the morning), before, after, during.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">There is/are — negativa + interrogativa</div>
+          <div class="section-note">There isn't a... / There aren't any... / Is there a...? / Are there any...?</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Quarta</div>
+          <div class="day-date">25</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Vocabulário de tecnologia / dev</div>
+          <div class="words-badge">10 palavras no Anki</div>
+          <div class="section-note">code, bug, fix, test, deploy, file, error, function, database, screen. (relevante pro seu dia a dia)</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Preposições básicas na prática</div>
+          <div class="section-note">Combine at/on/in com tempo e lugar. Ex: "I work at home on Mondays in the morning."</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Quinta</div>
+          <div class="day-date">26</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Revisão estratégica — lacunas</div>
+          <div class="words-badge">Foco nos cards com erro</div>
+          <div class="section-note">Abra o Anki, filtre cards com mais falhas. Estude só esses 15 min.</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Revisão geral — todo o mês</div>
+          <div class="section-note">To be · Present Simple · Pronomes · WH Questions · Negativas · There is/are · Preposições.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div>
+          <div class="day-label">Sexta</div>
+          <div class="day-date">27</div>
+        </div>
+        <div class="section">
+          <span class="section-label v">Vocabulário</span>
+          <div class="section-content">Teste final — mês 1</div>
+          <div class="words-badge">Meta: 500 palavras no Anki</div>
+          <div class="section-note">Abra o Anki e veja quantas palavras você tem. Revise todas com "Again" ou "Hard".</div>
+        </div>
+        <div class="section">
+          <span class="section-label g">Gramática</span>
+          <div class="section-content">Redação livre — 10 frases</div>
+          <div class="section-note">Escreva 10 frases sobre seu dia, sem traduzir. Use tudo que aprendeu no mês. Sem reler em PT.</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="week-summary">
+      <div class="summary-item"><div class="s-label">Vocab. acumulado</div><div class="s-value">~160 palavras novas</div></div>
+      <div class="summary-item"><div class="s-label">Gramática</div><div class="s-value">There is/are + Preposições ✓</div></div>
+      <div class="summary-item"><div class="s-label">Foco</div><div class="s-value">Consolidação total do mês</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOTALS -->
+<div class="total-block">
+  <div>
+    <div class="t-label">Meta de palavras</div>
+    <div class="t-val">500</div>
+  </div>
+  <div>
+    <div class="t-label">Dias de estudo</div>
+    <div class="t-val">20</div>
+  </div>
+  <div class="t-desc">
+    <strong>Você vai adicionar ~10 palavras/dia</strong> durante as semanas 1–3 e usar a semana 4 para consolidar e revisar. O Anki vai fazer as revisões automáticas acumularem — no fim do mês você vai ter visto cada palavra múltiplas vezes.
+  </div>
+</div>
+
+<div class="anki-tip">
+  <strong>// Dica Anki:</strong> Crie um deck chamado "Inglês — Mês 1". Adicione 10 cards por dia (seg–qui). Toda sexta, revise sem adicionar. Ative as revisões automáticas — não pule os dias de revisão, eles são mais importantes que os dias de card novo.
+</div>
+
+</body>
+</html>
